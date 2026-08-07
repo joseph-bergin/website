@@ -3,7 +3,25 @@
     "allow": [
       "Bash(npm -v)",
       "Bash(sw_vers -productVersion)",
-      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias \"@/*\" --no-turbopack --use-npm --yes)"
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias \"@/*\" --no-turbopack --use-npm --yes)",
+      "Bash(npm install *)",
+      "Bash(npm audit *)",
+      "Bash(npm ls *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(pkill -f \"next-server\")",
+      "Bash(npx eslint *)",
+      "Bash(npm run *)",
+      "Bash(python3 -c ' *)",
+      "Bash(sed -n '/statusLabel/,/};/p' components/sections/projects.tsx)",
+      "Bash(sed -n '/slug: \"llm-causal-reasoning\"/,/^    status:/p' lib/projects.ts)",
+      "Bash(awk 'NR>=138 && /^  \\\\{$/ {print NR\": start\"} NR>=138 && /^\\\\];$/ {print NR\": end array\"}' lib/projects.ts)",
+      "Bash(python3 -)",
+      "Bash(node -e \"1\")",
+      "Bash(npx tsc *)",
+      "Bash(curl -s -o /dev/null -w \"project page=%{http_code}\\\\n\" --max-time 30 http://localhost:3000/projects/llm-causal-reasoning)",
+      "Read(//Users/joebergin/Desktop/projects/sprites/website/**)",
+      "Bash(echo \"=== all sprite pngs available ===\")",
+      "Bash(node -e ' *)"
     ]
   }
 }

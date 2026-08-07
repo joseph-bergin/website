@@ -1,0 +1,458 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Design tokens
+   Dark-only. Warm neutrals, one ember accent borrowed from the
+   campfire sprite. No gradients, no glass, no neon.
+   ============================================================ */
+
+@theme {
+  /* Surfaces — warm-shifted near-blacks, not pure grey */
+  --color-canvas: #0b0b0c;
+  --color-surface: #111112;
+  --color-surface-raised: #151517;
+  --color-surface-hover: #1a1a1c;
+
+  /* Hairlines */
+  --color-line: #232326;
+  --color-line-strong: #2e2e33;
+
+  /* Text */
+  --color-ink: #ededec;
+  --color-ink-muted: #9a9a97;
+  --color-ink-faint: #6b6b68;
+
+  /* Ember — used sparingly: the fire, one link underline, focus rings */
+  --color-ember: #d98a3d;
+  --color-ember-dim: #8a5a2a;
+
+  --font-sans: var(--font-geist-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-pixel: var(--font-pixelify), var(--font-plex-mono), monospace;
+
+  --radius-card: 12px;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+  --shadow-card-hover: 0 1px 2px rgb(0 0 0 / 0.5), 0 16px 40px -16px rgb(0 0 0 / 0.65);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  /* Offset for the sticky nav when jumping to a section */
+  scroll-padding-top: 6rem;
+  background-color: var(--color-canvas);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-ember) 28%, transparent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Pixel art must never be smoothed by the browser */
+.pixelated {
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+}
+
+/* ------------------------------------------------------------
+   Sprite sheets (Aseprite PNG exports).
+   One frame-sized box, the sheet as its background, animated by
+   stepping background-position-x.
+   ------------------------------------------------------------ */
+
+.pixel-sheet {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--ps-w);
+  height: var(--ps-h);
+  background-repeat: no-repeat;
+  background-size: var(--ps-sheet-w) var(--ps-h);
+  background-position: 0 0;
+  image-rendering: pixelated;
+}
+
+@keyframes sheet-loop {
+  to {
+    background-position-x: var(--ps-end-loop);
+  }
+}
+
+@keyframes sheet-once {
+  to {
+    background-position-x: var(--ps-end-once);
+  }
+}
+
+.pixel-sheet--loop {
+  animation: sheet-loop var(--ps-dur) steps(var(--ps-steps-loop)) infinite;
+}
+
+.group:hover .pixel-sheet--hover-loop,
+.group:focus-within .pixel-sheet--hover-loop {
+  animation: sheet-loop var(--ps-dur) steps(var(--ps-steps-loop)) infinite;
+}
+
+.group:hover .pixel-sheet--hover-once,
+.group:focus-within .pixel-sheet--hover-once {
+  animation: sheet-once var(--ps-dur) steps(var(--ps-steps-once)) forwards;
+}
+
+/* Tiny pixel labels — never body copy */
+.label-pixel {
+  font-family: var(--font-pixel);
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-faint);
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+/* ============================================================
+   Sprite animations
+   Each is deliberately small: a flicker, a blink, a drift.
+   ============================================================ */
+
+@keyframes flame-flicker {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateY(0.5px) scaleY(0.93);
+  }
+}
+
+@keyframes ember-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes fire-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fish-swim {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes tail-flick {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.5);
+  }
+}
+
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes led-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.7px);
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes page-rustle {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.86);
+  }
+}
+
+@keyframes flag-raise {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-14deg);
+  }
+}
+
+@keyframes glint {
+  0%,
+  88%,
+  100% {
+    opacity: 0;
+  }
+  93% {
+    opacity: 1;
+  }
+}
+
+/* The grooming bob — a short dip on a long pause, the way cats actually do it. */
+@keyframes groom-bob {
+  0%,
+  62%,
+  100% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(1px);
+  }
+  78% {
+    transform: translateY(0);
+  }
+  86% {
+    transform: translateY(1px);
+  }
+}
+
+@keyframes groom-paw {
+  0%,
+  62%,
+  100% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: translate(-0.5px, 1.5px);
+  }
+  78% {
+    transform: translate(0, 0);
+  }
+  86% {
+    transform: translate(-0.5px, 1.5px);
+  }
+}
+
+@keyframes tail-sway {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(1px);
+  }
+}
+
+/* ------------------------------------------------------------
+   Sprite animation utilities.
+
+   Ambient (`anim-*`) run always but are deliberately slow and
+   low-amplitude. Hover-triggered (`hv-*`) only fire inside a
+   hovered .group, so a page at rest is almost entirely still.
+   ------------------------------------------------------------ */
+
+.anim-flame {
+  animation: flame-flicker 2.4s steps(2, end) infinite;
+}
+.anim-glow {
+  animation: fire-glow 2.4s ease-in-out infinite;
+}
+.anim-ember-a {
+  animation: ember-rise 3.1s ease-out infinite;
+}
+.anim-ember-b {
+  animation: ember-rise 3.7s ease-out 1.1s infinite;
+}
+.anim-ember-c {
+  animation: ember-rise 4.3s ease-out 2.2s infinite;
+}
+.anim-sway {
+  animation: sway 6s ease-in-out infinite;
+}
+.anim-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+.anim-cursor {
+  animation: cursor-blink 1.2s steps(1, end) infinite;
+}
+.anim-glint {
+  animation: glint 5s steps(1, end) infinite;
+}
+
+/* Hero cats. Slow enough that you notice them only if you stop and look. */
+.anim-breathe-slow {
+  animation: breathe 5.5s ease-in-out infinite;
+}
+.anim-groom-body {
+  animation: breathe 5s ease-in-out infinite;
+}
+.anim-groom-head {
+  animation: groom-bob 6s ease-in-out infinite;
+}
+.anim-groom-paw {
+  animation: groom-paw 6s ease-in-out infinite;
+}
+.anim-tail-sway {
+  animation: tail-sway 4.5s ease-in-out infinite;
+}
+
+.group:hover .hv-swim,
+.group:focus-within .hv-swim {
+  animation: fish-swim 1.6s ease-in-out infinite;
+}
+.group:hover .hv-tail,
+.group:focus-within .hv-tail {
+  animation: tail-flick 0.8s ease-in-out infinite;
+}
+.group:hover .hv-blink,
+.group:focus-within .hv-blink {
+  animation: blink 2.4s steps(1, end) infinite;
+}
+.group:hover .hv-led-a,
+.group:focus-within .hv-led-a {
+  animation: led-blink 1.1s steps(1, end) infinite;
+}
+.group:hover .hv-led-b,
+.group:focus-within .hv-led-b {
+  animation: led-blink 1.4s steps(1, end) 0.2s infinite;
+}
+.group:hover .hv-led-c,
+.group:focus-within .hv-led-c {
+  animation: led-blink 0.9s steps(1, end) 0.45s infinite;
+}
+.group:hover .hv-bubble-a,
+.group:focus-within .hv-bubble-a {
+  animation: ember-rise 1.8s ease-out infinite;
+}
+.group:hover .hv-bubble-b,
+.group:focus-within .hv-bubble-b {
+  animation: ember-rise 2.2s ease-out 0.5s infinite;
+}
+.group:hover .hv-bubble-c,
+.group:focus-within .hv-bubble-c {
+  animation: ember-rise 2.6s ease-out 1s infinite;
+}
+.group:hover .hv-page-l,
+.group:focus-within .hv-page-l {
+  animation: page-rustle 2.4s ease-in-out infinite;
+}
+.group:hover .hv-page-r,
+.group:focus-within .hv-page-r {
+  animation: page-rustle 2.4s ease-in-out 0.3s infinite;
+}
+.group:hover .hv-flag,
+.group:focus-within .hv-flag {
+  animation: flag-raise 2s ease-in-out infinite;
+}
+.group:hover .hv-press,
+.group:focus-within .hv-press {
+  animation: breathe 0.9s ease-in-out infinite;
+}
+
+/* ============================================================
+   Reduced motion — everything decorative stops.
+   The site must be fully legible and complete without motion.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Hold frame 0 rather than snapping to the last frame of the strip. */
+  .pixel-sheet {
+    animation: none !important;
+    background-position-x: 0 !important;
+  }
+}
