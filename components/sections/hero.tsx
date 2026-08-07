@@ -1,5 +1,5 @@
 import { PixelSheet } from "@/components/pixel/pixel-sheet";
-import { catFloorOffset, sheets } from "@/components/pixel/sheets";
+import { catFloorOffset, heroCatLayout, sheets } from "@/components/pixel/sheets";
 import { ButtonLink } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
 import { site } from "@/lib/site";
@@ -65,26 +65,27 @@ export function Hero() {
         </Reveal>
 
         {/*
-          The pair, bottom-right. Two things make this read as a scene rather
-          than a row of stickers: the negative margin pulls them close enough to
-          overlap slightly, and June sits a few pixels lower than Eevee so she
-          reads as lying nearer the viewer. She also paints on top (z-10).
+          The pair, bottom-right. June overlaps Eevee slightly and sits a few
+          pixels lower so she reads as lying nearer the viewer. She paints on
+          top (z-10). Layout offsets live in `heroCatLayout` and scale with
+          `HERO_CAT_SCALE`.
         */}
         <Reveal delay={0.34}>
-          {/* -bottom-8 drops them into the section's padding so June clears the
-              last line of the intro paragraph now that she's at 6x */}
-          <div className="pointer-events-none absolute -right-5 -bottom-8 hidden items-end lg:flex">
+          <div className="pointer-events-none absolute right-0 bottom-6 hidden items-end lg:flex">
             <PixelSheet
               {...sheets.junecat}
-              className="relative z-10 -mr-[86px]"
-              style={{ marginBottom: -(catFloorOffset("junecat") + 12) }}
+              className="relative z-10"
+              style={{
+                marginRight: -heroCatLayout.overlap,
+                marginBottom: -(catFloorOffset("junecat") + heroCatLayout.juneDepth),
+              }}
             />
-            {/* translate rather than margin: nudges her right without
-                reflowing June or the group's right anchor */}
             <PixelSheet
               {...sheets.eeveecat}
-              className="translate-x-[22px]"
-              style={{ marginBottom: -catFloorOffset("eeveecat") }}
+              style={{
+                transform: `translateX(${heroCatLayout.eeveeNudge}px)`,
+                marginBottom: -catFloorOffset("eeveecat"),
+              }}
             />
           </div>
         </Reveal>

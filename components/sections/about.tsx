@@ -30,11 +30,10 @@ export function About() {
               customer service calls. I built the grading engine, the reporting on top of it, and
               owned the AWS infrastructure it all ran on. We sold the company at the end of 2025.
             </p>
-            {/* <p>
-              Away from work I build games and draw pixel art — which is where the cats at the top
-              of this page came from, and every other sprite on it. There&apos;s something
-              clarifying about a medium where you only get thirty-two pixels to make your point.
-            </p> */}
+            <p>
+              Away from work I draw, hike, play basketball, and play video games. June
+              and Eevee — my two cats (the pair in the hero above) — mostly supervise.
+            </p>
           </div>
         </Reveal>
 

@@ -25,6 +25,9 @@ const S = 32; // every sprite so far is 32x32 per frame
 const BUMP = 1.5; // 48px
 const BASE = 1.25; // 40px — the floppy, which fills its canvas and needs less
 
+/** Shared scale for the hero cat pair. Layout nudges in `heroCatLayout` are tuned for this. */
+export const HERO_CAT_SCALE = 4;
+
 export const sheets = {
   plant: {
     src: "/sprites/plant.png",
@@ -76,7 +79,7 @@ export const sheets = {
    */
   junecat: {
     src: "/sprites/junecat.png",
-    scale: 6,
+    scale: HERO_CAT_SCALE,
     frameWidth: 50,
     frameHeight: 40,
     frames: 4,
@@ -86,7 +89,7 @@ export const sheets = {
   /** Eevee, sitting upright with a swishing tail. */
   eeveecat: {
     src: "/sprites/eeveecat.png",
-    scale: 6,
+    scale: HERO_CAT_SCALE,
     frameWidth: 50,
     frameHeight: 80,
     frames: 7,
@@ -109,6 +112,13 @@ export const sheets = {
  * on one shared ground line means offsetting each by its own padding.
  */
 export const CAT_FLOOR_PAD = { junecat: 14, eeveecat: 24 } as const;
+
+/** Hero cat pair layout, in CSS px at `HERO_CAT_SCALE`. */
+export const heroCatLayout = {
+  overlap: 58,
+  eeveeNudge: 15,
+  juneDepth: 8,
+} as const;
 
 /** Dead space under a hero cat, in CSS pixels at its configured scale. */
 export function catFloorOffset(name: keyof typeof CAT_FLOOR_PAD) {

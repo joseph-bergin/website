@@ -18,7 +18,7 @@ export default function NotFound() {
           Nothing here.
         </h1>
         <p className="mt-3 max-w-[46ch] text-[0.975rem] leading-relaxed text-ink-muted">
-          The cat has no idea either. This page either moved or never existed.
+          June has no idea either. This page either moved or never existed.
         </p>
         <Link
           href="/"
