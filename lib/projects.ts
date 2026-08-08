@@ -12,15 +12,6 @@ export type ResultsTable = {
   highlight?: number[];
 };
 
-export type Screenshot = {
-  /** Path under /public. Leave empty to render an annotated empty slot. */
-  src?: string;
-  alt: string;
-  caption: string;
-  width?: number;
-  height?: number;
-};
-
 export type Project = {
   slug: string;
   title: string;
@@ -43,7 +34,6 @@ export type Project = {
   challenges: { title: string; body: string }[];
   lessons: string[];
   results?: ResultsTable;
-  screenshots: Screenshot[];
   futureWork: string[];
 };
 
@@ -120,20 +110,6 @@ export const projects: Project[] = [
       "When inference cost sits directly under the value proposition, cost work stops being optimization and becomes product work.",
       "Owning the infrastructure as well as the application meant nothing was ever someone else's problem — which is exhausting at the time and enormously clarifying in retrospect.",
       "A small team ships faster than it can decide what to ship. The bottleneck was rarely engineering.",
-    ],
-    screenshots: [
-      {
-        alt: "Akoe benchmark configuration screen",
-        caption: "Benchmark configuration — where an admin defines what a good call means for their team.",
-      },
-      {
-        alt: "Akoe call grading result",
-        caption: "A graded call, scored per criterion rather than as a single aggregate number.",
-      },
-      {
-        alt: "Akoe insights reporting",
-        caption: "Insights reporting — call-quality trends rolled up across agents over time.",
-      },
     ],
     futureWork: [
       "The product was sold, so this list is what I would have built next rather than what is planned.",
@@ -235,23 +211,6 @@ export const projects: Project[] = [
       "That shared preference points at a review-to-rating habit: summarise the text, then produce a number that fits. My reading is that this comes out of RLHF — the reward model is trained on human preference data, which pushes the actor toward responses humans would have written, and a human reading a review and guessing a rating works in exactly that direction.",
       "Answering correctly and reasoning causally are different things. All three models scored respectably on a task they appear to be solving the wrong way round, which is the finding: fluent, useful output is not evidence of causal understanding.",
       "Model architecture matters more than scale here. Llama-3-8B trailed the other two by roughly ten points across every setup, but showed the same directional preference — so the ordering is not an artifact of one provider.",
-    ],
-    screenshots: [
-      {
-        alt: "Prompt table showing the three causal setups",
-        caption:
-          "The three prompts. Same review, same question, different stated direction of causation.",
-      },
-      {
-        alt: "Example of a correct GPT-3.5 prediction",
-        caption:
-          "A correct prediction under Setup 1 — the model reads a negative review about a contractor who never called back and returns 1 star, with its reasoning attached.",
-      },
-      {
-        alt: "Example of an incorrect prediction",
-        caption:
-          "A miss under Setup 2: strong dissatisfaction with the food, but the model weighs the positive comments about atmosphere and overshoots to 3 stars.",
-      },
     ],
     futureWork: [
       "Widen the dataset beyond Yelp reviews. One domain and one task shape is enough to show the effect but not enough to generalise it.",

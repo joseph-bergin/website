@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 import { Nav } from "@/components/nav";
-import { Sprite } from "@/components/pixel/sprite";
-import { cat } from "@/components/pixel/sprites";
+import { PixelSheet } from "@/components/pixel/pixel-sheet";
+import { sheets } from "@/components/pixel/sheets";
 
 export default function NotFound() {
   return (
@@ -12,7 +12,8 @@ export default function NotFound() {
         id="main"
         className="mx-auto flex min-h-[calc(100svh-3.5rem)] max-w-4xl flex-col items-start justify-center px-6"
       >
-        <Sprite sprite={cat} size={56} label="A pixel-art cat, asleep." />
+        {/* Smaller than the hero pair — 4x keeps her from dominating the page. */}
+        <PixelSheet {...sheets.junecat} scale={2} label="June, a pixel-art cat, asleep." />
         <p className="label-pixel mt-6">404</p>
         <h1 className="mt-3 text-[2rem] font-medium tracking-[-0.03em] text-ink">
           Nothing here.

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -10,7 +9,7 @@ import { ProjectMark } from "@/components/pixel/project-mark";
 import { ProjectJsonLd } from "@/components/seo/json-ld";
 import { ButtonLink, Card, Chip } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
-import { getProject, projects, type Screenshot } from "@/lib/projects";
+import { getProject, projects } from "@/lib/projects";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -66,37 +65,6 @@ function Prose({ paragraphs }: { paragraphs: string[] }) {
         </p>
       ))}
     </div>
-  );
-}
-
-/**
- * Renders a real image when one exists, and an honest labelled slot when it
- * doesn't — better than shipping a fake mockup that a hiring manager will
- * recognise as filler.
- */
-function ScreenshotFrame({ shot }: { shot: Screenshot }) {
-  return (
-    <figure>
-      <div className="overflow-hidden rounded-[12px] border border-line bg-surface">
-        {shot.src ? (
-          <Image
-            src={shot.src}
-            alt={shot.alt}
-            width={shot.width ?? 1600}
-            height={shot.height ?? 1000}
-            className="h-auto w-full"
-            sizes="(max-width: 768px) 100vw, 768px"
-          />
-        ) : (
-          <div className="grid aspect-[16/10] place-items-center bg-[repeating-linear-gradient(45deg,transparent,transparent_9px,rgba(255,255,255,0.018)_9px,rgba(255,255,255,0.018)_18px)]">
-            <p className="label-pixel">screenshot slot</p>
-          </div>
-        )}
-      </div>
-      <figcaption className="mt-2.5 text-[0.82rem] leading-relaxed text-ink-faint">
-        {shot.caption}
-      </figcaption>
-    </figure>
   );
 }
 
@@ -273,14 +241,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </li>
             ))}
           </ul>
-        </Block>
-
-        <Block label="screenshots" title="Screenshots">
-          <div className="space-y-8">
-            {project.screenshots.map((shot) => (
-              <ScreenshotFrame key={shot.alt} shot={shot} />
-            ))}
-          </div>
         </Block>
 
         <Block label="stack" title="Tech stack">

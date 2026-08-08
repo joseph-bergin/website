@@ -1,31 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
-  <rect width="32" height="32" rx="6" fill="#0b0b0c"/>
-  <g fill="#a84d1c">
-    <rect x="15" y="7" width="1" height="1"/>
-    <rect x="14" y="8" width="1" height="2"/><rect x="16" y="8" width="1" height="2"/>
-    <rect x="13" y="10" width="1" height="2"/><rect x="17" y="10" width="1" height="2"/>
-    <rect x="12" y="12" width="1" height="3"/><rect x="19" y="12" width="1" height="3"/>
-    <rect x="11" y="14" width="1" height="4"/><rect x="20" y="14" width="1" height="4"/>
-    <rect x="12" y="18" width="8" height="1"/>
-  </g>
-  <g fill="#d8822f">
-    <rect x="15" y="9" width="1" height="2"/>
-    <rect x="14" y="11" width="3" height="2"/>
-    <rect x="13" y="13" width="6" height="2"/>
-    <rect x="12" y="15" width="8" height="3"/>
-  </g>
-  <g fill="#f2c85c">
-    <rect x="15" y="12" width="1" height="2"/>
-    <rect x="14" y="14" width="4" height="3"/>
-  </g>
-  <g fill="#5c4230">
-    <rect x="9" y="19" width="14" height="2"/>
-    <rect x="11" y="21" width="10" height="1"/>
-  </g>
-  <g fill="#43434d">
-    <rect x="7" y="23" width="3" height="1"/>
-    <rect x="12" y="23" width="3" height="1"/>
-    <rect x="17" y="23" width="3" height="1"/>
-    <rect x="22" y="23" width="3" height="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" shape-rendering="crispEdges">
+  <rect width="44" height="44" fill="#000000"/>
+  <g fill="#ffffff" font-family="monospace" font-size="20" font-weight="bold" letter-spacing="-2">
+    <text x="7" y="30">jsb</text>
   </g>
 </svg>

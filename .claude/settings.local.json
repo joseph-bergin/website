@@ -21,7 +21,8 @@
       "Bash(curl -s -o /dev/null -w \"project page=%{http_code}\\\\n\" --max-time 30 http://localhost:3000/projects/llm-causal-reasoning)",
       "Read(//Users/joebergin/Desktop/projects/sprites/website/**)",
       "Bash(echo \"=== all sprite pngs available ===\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(sed -i '' 's/scale={4}/scale={2}/g' app/not-found.tsx)"
     ]
   }
 }
