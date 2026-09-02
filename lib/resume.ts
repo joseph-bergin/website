@@ -81,10 +81,6 @@ export const roles: Role[] = [
       "Co-founded an LLM-powered quality assurance platform for grading and reviewing customer service calls. Acquired.",
     highlights: [
       {
-        title: "From zero to acquisition",
-        body: "Co-founded Akoe, an LLM-powered quality assurance platform for grading and reviewing customer service calls, and grew it through to a company sale.",
-      },
-      {
         title: "The grading engine",
         body: "Built the core engine that scored agent performance against customizable, admin-defined benchmarks — replacing a manual call-review process with something that ran on every call.",
       },

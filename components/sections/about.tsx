@@ -29,7 +29,7 @@ export function About() {
             <p>
               Before this I co-founded Akoe, an LLM-powered quality assurance platform for grading
               customer service calls. I built the grading engine, the reporting on top of it, and
-              owned the AWS infrastructure it all ran on. We sold the company at the end of 2025.
+              owned the AWS infrastructure it all ran on.
             </p>
             <p>
               Away from work I draw, hike, play basketball, and play video games. June
