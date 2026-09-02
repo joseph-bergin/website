@@ -9,7 +9,8 @@ export function About() {
         <Reveal>
           <div className="space-y-4 text-[0.975rem] leading-[1.75] text-ink-muted">
             <p>
-              I&apos;m an AI engineer at JPMorgan Chase, where I build the retrieval infrastructure
+              I&apos;m a software engineer at JPMorgan Chase, where I build the retrieval
+              infrastructure
               that Wealth Management&apos;s AI agents run on — a centralized OpenSearch vector store
               with a REST layer in front of it — along with the RAG agents that consume it. One of
               them answers investment questions for more than a thousand financial advisors.
