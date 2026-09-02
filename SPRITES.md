@@ -12,7 +12,7 @@ the old inline-SVG system; with sheets, animation is frames and layers get flatt
 
 ## 1. What to draw
 
-**8 sprites — 7 delivered, 1 left.** Canvas sizes are fixed — the layout depends on them.
+**9 sprites — 7 delivered, 2 left.** Canvas sizes are fixed — the layout depends on them.
 
 ### Section icons — 32 × 32
 
@@ -24,6 +24,7 @@ the old inline-SVG system; with sheets, animation is frames and layers get flatt
 | 4 | `gear.png` | Skills heading | 2 | Rotates | on hover | ✅ **live** |
 | 5 | `mailbox.png` | Contact heading | 1 | — static | — | ✅ **live** |
 | 6 | `cat.png` | Footer + 404 page | 4 | Sleeping, breathing | always | ⬜ to draw |
+| 6b | `opensource.png` | Open Source heading | 1-4 | your call | — | ⬜ to draw |
 
 `chest` replaced the fish for Projects and `gear` replaced the sword for Skills.
 

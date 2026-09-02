@@ -7,7 +7,6 @@ import { Section } from "@/components/ui/section";
 import { projects, type Project } from "@/lib/projects";
 
 const statusLabel: Record<Project["status"], string> = {
-  acquired: "acquired",
   completed: "completed",
   draft: "write-up pending",
 };

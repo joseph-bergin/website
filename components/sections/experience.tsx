@@ -45,7 +45,7 @@ export function Experience() {
       label="experience"
       title="Where I've worked"
       sheet="floppy"
-      intro="Four roles, two of them internships, one of them a company I helped start and sell."
+      intro="Four roles, two of them internships, one of them a company I helped start."
     >
       <ol className="relative space-y-4 border-l border-line pl-8">
         {roles.map((role, i) => (

@@ -35,7 +35,7 @@ export function Hero() {
           <p className="mt-6 max-w-[56ch] text-[0.975rem] leading-relaxed text-ink-muted">
             I work on retrieval infrastructure and the agents that sit on top of it — vector
             stores, RAG pipelines, and the unglamorous API layers that make them usable by more
-            than one team. Before that I co-founded a company and sold it.
+            than one team. Before that I co-founded a company.
           </p>
         </Reveal>
 

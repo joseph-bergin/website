@@ -1,7 +1,7 @@
 import type { SheetName } from "@/components/pixel/sheets";
 import type { ProjectSpriteName } from "@/components/pixel/sprites";
 
-export type ProjectStatus = "acquired" | "completed" | "draft";
+export type ProjectStatus = "completed" | "draft";
 
 /** Optional results table, for projects that produced measurements worth showing. */
 export type ResultsTable = {
@@ -43,16 +43,15 @@ export const projects: Project[] = [
     title: "Akoe",
     tagline: "LLM-powered quality assurance for customer service calls",
     description:
-      "A platform that graded and reviewed customer service calls with LLMs, scoring agents against benchmarks their own admins defined. Co-founded, built, and grown through to acquisition.",
+      "A platform that graded and reviewed customer service calls with LLMs, scoring agents against benchmarks their own admins defined. Co-founded and built from the ground up.",
     year: "2024 — 2025",
-    status: "acquired",
+    status: "completed",
     sprite: "robot",
     stack: ["Next.js", "TypeScript", "Python", "Flask", "AWS", "LLMs", "PostgreSQL"],
     links: [],
     overview: [
       "Akoe was an LLM-powered quality assurance platform for grading and reviewing customer service calls. I co-founded it, built the core grading engine and the reporting layer on top of it, and owned the AWS infrastructure the whole thing ran on.",
       "Call centers already knew their call quality mattered. What they didn't have was a way to look at more than a sliver of it. Akoe's premise was that if grading a call costs cents instead of a supervisor's afternoon, you stop sampling and start grading everything.",
-      "The company was sold in 2025.",
     ],
     problem: [
       "Quality assurance in a call center is a sampling problem. A supervisor listens to a handful of calls per agent per month, fills in a rubric by hand, and extrapolates. The sample is small, the rubric is applied inconsistently between reviewers, and by the time feedback reaches the agent the call is weeks old.",
@@ -106,13 +105,13 @@ export const projects: Project[] = [
       },
     ],
     lessons: [
-      "Configuration is a feature, and it is much harder than the hard-coded version. Letting customers define their own benchmarks was the thing that made Akoe sellable and the thing that made the engine difficult.",
+      "Configuration is a feature, and it is much harder than the hard-coded version. Letting customers define their own benchmarks was the thing that made Akoe commercially viable and the thing that made the engine difficult.",
       "When inference cost sits directly under the value proposition, cost work stops being optimization and becomes product work.",
       "Owning the infrastructure as well as the application meant nothing was ever someone else's problem — which is exhausting at the time and enormously clarifying in retrospect.",
       "A small team ships faster than it can decide what to ship. The bottleneck was rarely engineering.",
     ],
     futureWork: [
-      "The product was sold, so this list is what I would have built next rather than what is planned.",
+      "This list is what I would have built next rather than what is planned.",
       "Calibration tooling: let an admin grade a handful of calls by hand and measure how closely the engine agrees, so trust in the rubric is measured rather than assumed.",
       "Real-time assistance during a call rather than review after it.",
       "Pushing more of the scoring work onto cheaper deterministic checks, reserving inference for the criteria that genuinely need judgment.",

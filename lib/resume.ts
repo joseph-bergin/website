@@ -78,7 +78,7 @@ export const roles: Role[] = [
     logo: "/logos/akoe.png",
     monogram: "AK",
     summary:
-      "Co-founded an LLM-powered quality assurance platform for grading and reviewing customer service calls. Acquired.",
+      "Co-founded an LLM-powered quality assurance platform for grading and reviewing customer service calls.",
     highlights: [
       {
         title: "The grading engine",
@@ -141,6 +141,47 @@ export const roles: Role[] = [
       },
     ],
     tech: ["Java", "Spring Boot", "Liquibase", "SQL", "REST APIs"],
+  },
+];
+
+/**
+ * Merged upstream contributions. Titles, numbers and diff sizes are taken
+ * straight from the pull requests — update them from GitHub, not from memory.
+ */
+export type Contribution = {
+  repo: string;
+  number: number;
+  title: string;
+  href: string;
+  merged: string;
+  /** Net diff, as shown on the PR. */
+  diff: string;
+  summary: string;
+  tech: string[];
+};
+
+export const contributions: Contribution[] = [
+  {
+    repo: "neuml/txtai",
+    number: 1212,
+    title: "Add ONNX vectors backend",
+    href: "https://github.com/neuml/txtai/pull/1212",
+    merged: "Sep 2026",
+    diff: "+424 / −0",
+    summary:
+      "Added a dense-vectors backend that runs ONNX embedding models directly through onnxruntime, so ONNX embeddings no longer pull in a full Torch install. Token output is mean-pooled against the attention mask so padding never leaks into the vector, and the backend detects CUDA through onnxruntime itself rather than through Torch.",
+    tech: ["Python", "ONNX", "onnxruntime", "Embeddings"],
+  },
+  {
+    repo: "apache/airflow",
+    number: 72119,
+    title: "Migrate Exasol provider to pyexasol 2.x",
+    href: "https://github.com/apache/airflow/pull/72119",
+    merged: "Aug 2026",
+    diff: "+78 / −19",
+    summary:
+      "Removed the pyexasol<2 version cap on Airflow's Exasol provider and fixed the type errors the cap had been hiding. Query parameters are now normalised to a mapping, and two inputs that could never actually reach the driver fail with a clear message instead of breaking deep inside it.",
+    tech: ["Python", "Airflow", "mypy", "Exasol"],
   },
 ];
 
