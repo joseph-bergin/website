@@ -16,7 +16,7 @@ export function OpenSource() {
       label="open source"
       title="Merged upstream"
       sprite={server}
-      intro="Contributions to projects I use at work."
+      intro="Contributions to projects I think are cool."
     >
       <ul className="space-y-3">
         {contributions.map((c, i) => (
