@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   creator: site.name,
   keywords: [
     "Joseph Bergin",
-    "AI Engineer",
+    "Software Engineer",
     "RAG",
     "OpenSearch",
     "vector search",
