@@ -26,7 +26,7 @@ export const roles: Role[] = [
   {
     company: "JPMorgan Chase",
     team: "Wealth Management",
-    title: "AI Engineer",
+    title: "Software Engineer",
     location: "Plano, TX",
     start: "2025-02",
     end: "present",
